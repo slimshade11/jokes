@@ -8,20 +8,31 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from '@standalone/components/navbar/navbar.component';
+import { ROOT_REDUCERS } from '@store/root-reducer';
+import { HttpClientModule } from '@angular/common/http';
+import { JokesEffects } from '@store/jokes/jokes.effects';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { MessageService } from 'primeng/api';
+
+const declarations: Array<any> = [AppComponent];
+const imports: Array<any> = [
+  BrowserModule,
+  BrowserAnimationsModule,
+  AppRoutingModule,
+  HttpClientModule,
+  ButtonModule,
+  NavbarComponent,
+  ProgressBarModule,
+  StoreModule.forRoot(ROOT_REDUCERS),
+  StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+  EffectsModule.forRoot([JokesEffects]),
+];
+const providers: Array<any> = [MessageService];
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    ButtonModule,
-    NavbarComponent,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]),
-  ],
-  providers: [],
+  declarations,
+  imports,
+  providers,
   bootstrap: [AppComponent],
 })
 export class AppModule {}

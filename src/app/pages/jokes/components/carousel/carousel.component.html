@@ -1,10 +1,10 @@
-<p-carousel [value]="jokes" [numVisible]="1" [numScroll]="1" [circular]="true" [showIndicators]="false" [showNavigators]="false">
+<p-carousel #carousel [value]="jokes" [numVisible]="1" [numScroll]="1" [circular]="true" [showIndicators]="false" [showNavigators]="false">
   <ng-template let-joke pTemplate="item">
     <div class="p-2 h-full">
       <p-card styleClass="flex flex-col h-full">
         <ng-template pTemplate="header">
           <p class="flex justify-end p-2">
-            kategoria: <span class="fontsemibold"> {{ joke.category }} </span>
+            kategoria: <span class="fontsemibold ml-2"> {{ joke.category | categoryDir }} </span>
           </p>
         </ng-template>
         {{ joke.content }}
@@ -13,4 +13,4 @@
   </ng-template>
 </p-carousel>
 
-<button class="block ml-auto mt-3" pButton label="Następny"></button>
+<button (click)="onNextClick()" class="block ml-auto mt-3" pButton label="Następny"></button>

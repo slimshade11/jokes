@@ -14,6 +14,8 @@ import { JokesActions } from '@store/jokes';
     <jokes-navbar></jokes-navbar>
 
     <router-outlet></router-outlet>
+
+    <p-toast position="top-right"></p-toast>
   `,
 })
 export class AppComponent implements OnInit {
@@ -24,5 +26,6 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(JokesActions.getJokes());
+    this.store.dispatch(JokesActions.getMyJokes());
   }
 }

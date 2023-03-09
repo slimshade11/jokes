@@ -11,6 +11,7 @@ import { AddJokeDialogComponent } from '@jokes/components/add-joke-dialog/add-jo
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CategoryDirPipe } from '@standalone/category-dir.pipe';
 
 const declarations: Array<any> = [JokesViewComponent, CarouselComponent, AddJokeDialogComponent];
 const imports: Array<any> = [
@@ -23,6 +24,7 @@ const imports: Array<any> = [
   DropdownModule,
   ReactiveFormsModule,
   InputTextareaModule,
+  CategoryDirPipe,
 ];
 const providers: Array<any> = [DialogService];
 

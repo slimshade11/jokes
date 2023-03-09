@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JokesEffects } from '@store/jokes/jokes.effects';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 const declarations: Array<any> = [AppComponent];
 const imports: Array<any> = [
@@ -23,6 +24,9 @@ const imports: Array<any> = [
   ButtonModule,
   NavbarComponent,
   ProgressBarModule,
+  ToastModule,
+
+  //NgRx
   StoreModule.forRoot(ROOT_REDUCERS),
   StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   EffectsModule.forRoot([JokesEffects]),

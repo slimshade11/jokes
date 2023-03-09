@@ -1,0 +1,12 @@
+@use './variables.scss' as *;
+
+button.p-button {
+  background-color: $yellow !important;
+  color: $black !important;
+  border: none;
+  box-shadow: none !important;
+
+  &:hover {
+    background-color: lighten($yellow, 20%) !important;
+  }
+}

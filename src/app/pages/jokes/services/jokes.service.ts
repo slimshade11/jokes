@@ -3,9 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Joke } from '@app/common/models/joke.model';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class JokesService {
   private http: HttpClient = inject(HttpClient);
 

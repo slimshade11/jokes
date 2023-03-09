@@ -29,10 +29,5 @@ const imports: Array<any> = [
 ];
 const providers: Array<any> = [MessageService];
 
-@NgModule({
-  declarations,
-  imports,
-  providers,
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations, imports, providers, bootstrap: [AppComponent] })
 export class AppModule {}

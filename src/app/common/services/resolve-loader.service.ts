@@ -2,9 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Router, ResolveStart, ResolveEnd } from '@angular/router';
 import { Observable, filter, map, merge } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ResolveLoaderService {
   private router: Router = inject(Router);
 

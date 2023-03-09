@@ -6,11 +6,13 @@ export const FeatureKey = 'jokes';
 
 export interface State {
   jokes: Joke[] | null;
+  myJokes: Joke[] | null;
   isLoading: boolean;
 }
 
 const inialState: State = {
   jokes: null,
+  myJokes: null,
   isLoading: false,
 };
 
@@ -19,8 +21,8 @@ export const Reducer = createReducer(
   on(JokesActions.getJokes, (state) => {
     return { ...state, isLoading: true };
   }),
-  on(JokesActions.getJokesSuccess, (_, { jokes }) => {
-    return { jokes, isLoading: false };
+  on(JokesActions.getJokesSuccess, (state, { jokes }) => {
+    return { ...state, jokes, isLoading: false };
   }),
   on(JokesActions.getJokesFailure, (state) => {
     return { ...state, isLoading: false };

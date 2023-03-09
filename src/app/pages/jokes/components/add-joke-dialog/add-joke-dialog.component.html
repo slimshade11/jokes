@@ -1,0 +1,18 @@
+<ng-container *ngIf="form$ | async as form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <p-dropdown
+      formControlName="category"
+      [options]="categories"
+      optionLabel="name"
+      styleClass="block w-full"
+      placeholder="Wybierz kategorie">
+    </p-dropdown>
+
+    <textarea formControlName="content" pInputTextarea class="w-full mt-5"></textarea>
+
+    <div class="flex justify-end gap-3 mt-6">
+      <button pButton label="Anuluj" type="button" class="p-button-text"></button>
+      <button pButton label="Dodaj" type="submit"></button>
+    </div>
+  </form>
+</ng-container>

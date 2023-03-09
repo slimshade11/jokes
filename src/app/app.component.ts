@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ResolveLoaderService } from '@common/services/resolve-loader.service';
-import { JokesActions } from './store/jokes';
+import { JokesActions } from '@store/jokes';
 
 @Component({
   selector: 'app-root',

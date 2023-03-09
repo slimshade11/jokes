@@ -23,8 +23,8 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@common/*": ["src/app/common/*"],
-      "@jokes/*": ["src/app/features/jokes/*"],
-      "@my-jokes/*": ["src/app/features/my-jokes/*"],
+      "@jokes/*": ["src/app/pages/jokes/*"],
+      "@my-jokes/*": ["src/app/pages/my-jokes/*"],
       "@standalone/*": ["src/app/standalone/*"],
       "@store/*": ["src/app/store/*"]
     }

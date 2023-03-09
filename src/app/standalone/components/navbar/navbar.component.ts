@@ -13,7 +13,6 @@ const NavbarImports: Array<any> = [CommonModule, MenubarModule];
   standalone: true,
   imports: NavbarImports,
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
   public menuLinks: MenuItem[] = MenuLinks;

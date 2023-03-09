@@ -1,0 +1,11 @@
+<div class="max-w-xl mx-auto mt-10">
+  <button pButton (click)="openAddJokeDialog()" label="Dodaj" class="mb-3"></button>
+
+  <ng-container *ngIf="jokes$ | async as jokes; else noJokes">
+    <jokes-carousel [jokes]="jokes"></jokes-carousel>
+  </ng-container>
+
+  <ng-template #noJokes>
+    <div>Brak żartów</div>
+  </ng-template>
+</div>

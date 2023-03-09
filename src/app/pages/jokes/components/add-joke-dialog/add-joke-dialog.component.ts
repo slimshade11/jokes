@@ -30,10 +30,12 @@ export class AddJokeDialogComponent implements OnInit {
       return;
     }
 
+    const { category, content } = form.value;
+
     this.dialogRef.close({
       id: Math.random().toString(36).substring(2, 9),
-      category: form.value.category!,
-      content: form.value.content!,
+      category,
+      content,
     } as Joke);
   }
 

@@ -45,6 +45,7 @@ export class JokesViewComponent extends DestroyComponent {
           .pipe(
             take(1),
             tap((myJokes: Joke[]): void => {
+              console.log(2);
               this.persistanceService.set('myJokes', [...myJokes, myJoke]);
             })
           )

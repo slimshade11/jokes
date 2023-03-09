@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Joke } from '@common/models/joke.model';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'jokes-my-jokes-view',
@@ -14,10 +14,6 @@ export class MyJokesViewComponent {
   constructor(private activatedRoute: ActivatedRoute) {}
 
   private getJokes$(): Observable<Joke[]> {
-    return this.activatedRoute.data.pipe(
-      map(({ myJokes }: Data): Joke[] => {
-        return myJokes;
-      })
-    );
+    return this.activatedRoute.data.pipe(map(({ myJokes }: Data): Joke[] => myJokes));
   }
 }

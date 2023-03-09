@@ -1,12 +1,12 @@
 import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
 import { Joke } from '@common/models/joke.model';
-import { JokesSelectors, JokesActions } from '@app/store/jokes';
+import { JokesSelectors, JokesActions } from '@store/jokes';
 import { Store } from '@ngrx/store';
-import { debounceTime, tap, filter, take } from 'rxjs';
+import { debounceTime, tap, filter } from 'rxjs';
 
 export const myJokesResolver: ResolveFn<Joke[]> = () => {
-  const store = inject(Store);
+  const store: Store = inject(Store);
 
   return store.select(JokesSelectors.myJokes).pipe(
     // fake loading

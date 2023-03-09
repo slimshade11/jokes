@@ -56,7 +56,7 @@ export class JokesEffects {
       return this.actions$.pipe(
         ofType(JokesActions.addJoke),
         tap((): void => {
-          this.toastService.showMessage(ToastStatus.SUCCESS, 'Sukces', 'Twój żart został dodany!');
+          this.toastService.showMessage(ToastStatus.SUCCESS, 'Sukces', 'Twój żart został zapisany!');
         })
       );
     },

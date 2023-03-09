@@ -6,7 +6,7 @@ export class PersistanceService {
     try {
       localStorage.setItem(key, JSON.stringify(data));
     } catch (e) {
-      console.error('Error saving to localStorage', e);
+      console.error('Błąd przy probie pobrania danych do localstorage', e);
     }
   }
 

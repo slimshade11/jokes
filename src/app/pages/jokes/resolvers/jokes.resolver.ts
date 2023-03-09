@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
-import { Joke } from '@app/common/models/joke.model';
-import { JokesSelectors, JokesActions } from '@app/store/jokes';
+import { Joke } from '@common/models/joke.model';
+import { JokesSelectors, JokesActions } from '@store/jokes';
 import { Store } from '@ngrx/store';
 import { debounceTime, tap, filter, take } from 'rxjs';
 

@@ -1,0 +1,21 @@
+@use './variables' as *;
+
+p-menubar .p-menubar {
+  padding: 1rem;
+  .p-menuitem-link {
+    .p-menuitem-text {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    &-active .p-menuitem-text {
+      color: $yellow !important;
+    }
+  }
+
+  p-menubarsub {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+  }
+}

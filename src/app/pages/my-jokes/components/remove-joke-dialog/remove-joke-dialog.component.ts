@@ -9,7 +9,7 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
 export class RemoveJokeDialogComponent {
   private dialogRef: DynamicDialogRef = inject(DynamicDialogRef);
 
-  onClose(isConfirmed: boolean): void {
+  public onClose(isConfirmed: boolean): void {
     this.dialogRef.close(isConfirmed);
   }
 }

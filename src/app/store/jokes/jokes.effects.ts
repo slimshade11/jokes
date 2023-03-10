@@ -57,19 +57,18 @@ export class JokesEffects {
     () => {
       return this.actions$.pipe(
         ofType(JokesActions.addJoke),
-        tap(({ myJoke }): void => {
+        tap((): void => {
           this.store
             .select(JokesSelectors.myJokes)
             .pipe(
               take(1),
               tap((myJokes: Joke[]): void => {
-                console.log(myJokes);
                 this.persistanceService.set('myJokes', myJokes);
 
-                this.toastService.showMessage(ToastStatus.SUCCESS, 'Sukces', 'Twój żart został zapisany!');
+                this.toastService.showMessage(ToastStatus.SUCCESS, 'Sukces!', 'Twój żart został zapisany');
               }),
               catchError(() => {
-                this.toastService.showMessage(ToastStatus.ERROR, 'Błąd przy zapisaniu żartu', 'Twój żart nie został zapisany!');
+                this.toastService.showMessage(ToastStatus.ERROR, 'Błąd przy zapisaniu żartu!', 'Twój żart nie został zapisany');
                 return EMPTY;
               })
             )
@@ -90,13 +89,12 @@ export class JokesEffects {
             .pipe(
               take(1),
               tap((myJokes: Joke[]): void => {
-                console.log(myJokes);
                 this.persistanceService.set('myJokes', myJokes);
 
-                this.toastService.showMessage(ToastStatus.SUCCESS, 'Sukces', 'Twój żart został usunięty!');
+                this.toastService.showMessage(ToastStatus.SUCCESS, 'Sukces!', 'Twój żart został usunięty');
               }),
               catchError(() => {
-                this.toastService.showMessage(ToastStatus.ERROR, 'Błąd przy usuwaniu żartu', 'Twój żart nie został usunięty!');
+                this.toastService.showMessage(ToastStatus.ERROR, 'Błąd przy usuwaniu żartu!', 'Twój żart nie został usunięty');
                 return EMPTY;
               })
             )

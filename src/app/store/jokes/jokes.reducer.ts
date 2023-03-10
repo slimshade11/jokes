@@ -44,5 +44,11 @@ export const Reducer = createReducer(
   // add joke
   on(JokesActions.addJoke, (state, { myJoke }) => {
     return { ...state, myJokes: [...state.myJokes, myJoke] };
+  }),
+
+  // remove joke
+  on(JokesActions.removeJoke, (state, { jokeId }) => {
+    const myFilteredJokes: Joke[] = state.myJokes.filter((joke: Joke): boolean => joke.id !== jokeId);
+    return { ...state, myJokes: myFilteredJokes };
   })
 );

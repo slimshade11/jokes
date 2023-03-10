@@ -1,0 +1,24 @@
+<div class="max-w-3xl mx-auto mt-10 px-3">
+  <button (click)="openAddJokeDialog()" pButton label="Dodaj" class="mb-5"></button>
+
+  <ng-container *ngIf="myJokes$ | async as myJokes">
+    <ul *ngIf="myJokes.length" class="flex flex-wrap gap-5">
+      <li *ngFor="let joke of myJokes" class="min-w-[280px] flex-1">
+        <p-card styleClass="flex flex-col h-full">
+          <ng-template pTemplate="header">
+            <p class="flex justify-end p-2">
+              kategoria: <span class="font-semibold ml-2"> {{ joke.category | categoryDir }} </span>
+            </p>
+          </ng-template>
+          {{ joke.content }}
+
+          <ng-template pTemplate="footer">
+            <button (click)="openRemoveJokeDialog(joke.id)" class="danger" pButton label="Usuń"></button>
+          </ng-template>
+        </p-card>
+      </li>
+    </ul>
+
+    <div *ngIf="!myJokes.length">Nie dodałes jeszcze żadneog żartu</div>
+  </ng-container>
+</div>

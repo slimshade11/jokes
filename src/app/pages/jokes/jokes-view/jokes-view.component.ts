@@ -6,8 +6,7 @@ import { map, Observable, take, takeUntil, tap } from 'rxjs';
 import { AddJokeDialogComponent } from '@jokes/components/add-joke-dialog/add-joke-dialog.component';
 import { DestroyComponent } from '@standalone/components/destroy/destroy.component';
 import { Store } from '@ngrx/store';
-import { JokesActions, JokesSelectors } from '@store/jokes';
-import { PersistanceService } from '@common/services/persistance.service';
+import { JokesActions } from '@store/jokes';
 
 @Component({
   selector: 'jokes-jokes-view',
@@ -16,12 +15,7 @@ import { PersistanceService } from '@common/services/persistance.service';
 export class JokesViewComponent extends DestroyComponent {
   public jokes$: Observable<Joke[]> = this.getJokes$();
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private dialogService: DialogService,
-    private store: Store,
-    private persistanceService: PersistanceService
-  ) {
+  constructor(private activatedRoute: ActivatedRoute, private dialogService: DialogService, private store: Store) {
     super();
   }
 
@@ -38,18 +32,7 @@ export class JokesViewComponent extends DestroyComponent {
 
     dialogRef.onClose.pipe(takeUntil(this.destroy$)).subscribe({
       next: (myJoke: Joke): void => {
-        this.store.dispatch(JokesActions.addJoke({ myJoke }));
-
-        this.store
-          .select(JokesSelectors.myJokes)
-          .pipe(
-            take(1),
-            tap((myJokes: Joke[]): void => {
-              console.log(2);
-              this.persistanceService.set('myJokes', [...myJokes, myJoke]);
-            })
-          )
-          .subscribe();
+        myJoke && this.store.dispatch(JokesActions.addJoke({ myJoke }));
       },
     });
   }

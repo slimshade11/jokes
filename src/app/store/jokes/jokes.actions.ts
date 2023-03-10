@@ -11,3 +11,5 @@ export const getMyJokesSuccess = createAction(JokesAcionTypes.GET_MY_JOKES_SUCCE
 export const getMyJokesFailure = createAction(JokesAcionTypes.GET_MY_JOKES_FAILURE);
 
 export const addJoke = createAction(JokesAcionTypes.ADD_JOKE, props<{ myJoke: Joke }>());
+
+export const removeJoke = createAction(JokesAcionTypes.REMOVE_JOKE, props<{ jokeId: string }>());

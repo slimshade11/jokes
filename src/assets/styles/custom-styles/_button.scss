@@ -9,4 +9,13 @@ button.p-button {
   &:hover {
     background-color: lighten($yellow, 20%) !important;
   }
+
+  &.danger {
+    background-color: $red !important;
+    color: $white !important;
+
+    &:hover {
+      background-color: lighten($red, 20%) !important;
+    }
+  }
 }

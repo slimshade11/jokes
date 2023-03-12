@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Joke } from '@common/models/joke.model';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { map, Observable, takeUntil } from 'rxjs';
+import { combineLatestWith, map, Observable, takeUntil } from 'rxjs';
 import { AddJokeDialogComponent } from '@jokes/components/add-joke-dialog/add-joke-dialog.component';
 import { DestroyComponent } from '@standalone/components/destroy/destroy.component';
 import { Store } from '@ngrx/store';
@@ -12,7 +12,7 @@ import { JokesActions, JokesSelectors } from '@store/jokes';
   templateUrl: './jokes-view.component.html',
 })
 export class JokesViewComponent extends DestroyComponent {
-  public jokes$: Observable<Joke[]> = this.store.select(JokesSelectors.jokes);
+  public jokes$: Observable<Joke[]> = this.getAllJokes$();
 
   constructor(private dialogService: DialogService, private store: Store) {
     super();
@@ -30,5 +30,12 @@ export class JokesViewComponent extends DestroyComponent {
         myJoke && this.store.dispatch(JokesActions.addJoke({ myJoke }));
       },
     });
+  }
+
+  private getAllJokes$(): Observable<Joke[]> {
+    return this.store.select(JokesSelectors.jokes).pipe(
+      combineLatestWith(this.store.select(JokesSelectors.myJokes)),
+      map(([jokes, myJokes]: [Joke[], Joke[]]) => [...jokes, ...myJokes])
+    );
   }
 }

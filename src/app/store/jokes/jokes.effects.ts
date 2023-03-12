@@ -26,7 +26,7 @@ export class JokesEffects {
             return JokesActions.getJokesSuccess({ jokes });
           }),
           catchError(() => {
-            this.toastService.showMessage(ToastStatus.ERROR, 'Błąd', 'Wystąpił problem przy pobieraniu danych z bazy');
+            this.toastService.showMessage(ToastStatus.ERROR, 'Błąd', 'Wystąpił problem przy pobieraniu danych');
             return of(JokesActions.getJokesFailure());
           })
         );
